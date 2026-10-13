@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mission Control — a personal AI command center for turning messy thoughts into action." />
+  <title>Mission Control — Personal AI OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand"><span class="brand-mark"><i></i><i></i><i></i></span><span>mission<br><b>control</b></span></div>
+      <div class="workspace-switch"><span class="avatar">AM</span><span><b>Alex Morgan</b><small>Personal OS</small></span><span class="chevron">⌄</span></div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="dashboard"><span>◈</span> Command center <em>⌘1</em></button>
+        <button class="nav-item" data-view="inbox"><span>✦</span> Brain dump <em id="inbox-count">3</em></button>
+        <button class="nav-item" data-view="tasks"><span>✓</span> Tasks <em id="task-count">6</em></button>
+        <button class="nav-item" data-view="ideas"><span>◌</span> Ideas <em>3</em></button>
+        <button class="nav-item" data-view="opportunities"><span>↗</span> Opportunities <em>2</em></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-view="mission"><span>⚑</span> Mission mode</button>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Settings</button>
+        <div class="storage-card"><span class="status-dot"></span><div><b>Local vault</b><small>Synced just now</small></div><span class="lock">⌑</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span class="pulse"></span><span>Personal OS</span><b>/</b><span id="current-view">Command center</span></div>
+        <div class="top-actions"><label class="global-search"><span>⌕</span><input id="search" type="search" placeholder="Search your entire mind..." /><kbd>⌘ K</kbd></label><button class="icon-button" id="theme-toggle" aria-label="Toggle theme">☼</button><button class="avatar avatar-button" aria-label="Account">AM</button></div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="hero-row">
+          <div><p class="eyebrow">MONDAY, OCTOBER 13, 2026 <span class="live-pill"><i></i> LIVE CONTEXT</span></p><h1>Good morning, Alex<span class="accent">.</span></h1><p class="hero-sub">Your mind is full. Let's turn the noise into <b>momentum.</b></p></div>
+          <button class="primary-button" id="new-dump"><span>＋</span> New brain dump</button>
+        </section>
+
+        <section class="insight-strip">
+          <div class="insight-icon">✦</div><div class="insight-copy"><span class="eyebrow">ONE THING YOU SHOULD DO RIGHT NOW</span><b id="now-action">Send the proposal follow-up before lunch.</b><small id="now-reason">It is high-impact, takes under 20 minutes, and unlocks your next conversation.</small></div><button class="text-button" id="do-now">Do it <span>↗</span></button>
+        </section>
+
+        <div id="view-dashboard" class="view active-view">
+          <section class="section-heading"><div><p class="eyebrow">YOUR OPERATING PICTURE</p><h2>Command center</h2></div><button class="ghost-button" id="why-three">Why these 3? <span>ⓘ</span></button></section>
+          <section class="top-grid">
+            <article class="panel focus-panel"><div class="panel-header"><div><span class="eyebrow">FOCUS QUEUE</span><h3>Today's top 3</h3></div><span class="score-ring">82<small>focus</small></span></div><div id="top-three-list" class="focus-list"></div></article>
+            <article class="panel briefing-panel"><div class="panel-header"><div><span class="eyebrow">AI SYNTHESIS · 08:42</span><h3>Your daily briefing</h3></div><span class="sparkle">✦</span></div><p class="briefing-lead">The important stuff, without the noise.</p><div class="briefing-points"><div><span class="point-icon blue">◷</span><p><b>What matters today</b><span>Close the loop with Maya and shape your store launch plan.</span></p></div><div><span class="point-icon amber">!</span><p><b>One thing to release</b><span>You don't need to compare another payment provider today.</span></p></div><div><span class="point-icon green">↗</span><p><b>Worth exploring</b><span>Three local businesses have the feedback problem you can solve.</span></p></div></div><button class="outline-button full" id="refresh-briefing">↻ Refresh briefing</button></article>
+          </section>
+          <section class="section-heading lower-heading"><div><p class="eyebrow">SIGNALS FROM YOUR VAULT</p><h2>What's on your mind</h2></div><button class="text-button" data-view="inbox">View all <span>→</span></button></section>
+          <section class="signal-grid"><article class="panel signal-panel"><div class="panel-header"><div><span class="eyebrow">INBOX</span><h3>Unprocessed thoughts</h3></div><span class="count-badge" id="inbox-badge">03</span></div><div id="inbox-preview"></div><button class="outline-button full" data-view="inbox">Open inbox <span>→</span></button></article><article class="panel signal-panel"><div class="panel-header"><div><span class="eyebrow">OVERDUE / NEGLECTED</span><h3>You've been putting this off</h3></div><span class="warning">!</span></div><div class="neglected-mini"><b>Apply for startup accelerator</b><span>Untouched for 12 days</span><div class="mini-actions"><button data-neglect="keep">KEEP</button><button data-neglect="reschedule">RESCHEDULE</button><button data-neglect="archive">ARCHIVE</button></div></div><button class="outline-button full" data-view="tasks">Review neglected items <span>→</span></button></article><article class="panel signal-panel"><div class="panel-header"><div><span class="eyebrow">OPPORTUNITY RADAR</span><h3>Signals worth exploring</h3></div><span class="radar-icon">◎</span></div><div class="radar-mini"><span class="radar-line"></span><div><b>Local feedback automation</b><small>3 connected notes · high potential</small></div></div><button class="outline-button full" data-view="opportunities">Explore radar <span>→</span></button></article></section>
+        </div>
+
+        <div id="view-inbox" class="view"><section class="section-heading"><div><p class="eyebrow">CAPTURE WITHOUT FRICTION</p><h2>Brain dump</h2><p class="section-sub">Put the messy version here. Mission Control will find the signal.</p></div></section><section class="dump-layout"><article class="panel dump-panel"><div class="dump-top"><span class="dump-orb">✦</span><div><b>What's taking up space?</b><span>Thoughts, tasks, ideas, links — anything goes.</span></div><span class="ai-status"><i></i> AI ready</span></div><textarea id="dump-input" placeholder="I need to...&#10;&#10;Or paste a meeting note, a rough idea, a problem you're stuck on..."></textarea><div class="dump-footer"><span>⌘ + Enter to analyze</span><button class="primary-button" id="analyze-dump">✦ Analyze my thoughts</button></div></article><article class="panel processing-panel"><div class="panel-header"><div><span class="eyebrow">HOW IT WORKS</span><h3>From noise to next move</h3></div></div><div class="process-step"><span>01</span><div><b>Drop it in</b><small>No organizing required.</small></div></div><div class="process-step"><span>02</span><div><b>AI finds the signal</b><small>Classifies, prioritizes, connects.</small></div></div><div class="process-step"><span>03</span><div><b>You take action</b><small>One clear next move at a time.</small></div></div><div class="privacy-note">⌑ <span>Your data stays in this local demo vault.</span></div></article></section><section class="section-heading inline-heading"><div><p class="eyebrow">RECENT CAPTURES</p><h3>Unprocessed inbox</h3></div><span class="muted">Click an item to inspect</span></section><div id="inbox-list" class="stack-list"></div></div>
+
+        <div id="view-tasks" class="view"><section class="section-heading"><div><p class="eyebrow">EXECUTION LAYER</p><h2>Tasks</h2><p class="section-sub">Small, visible moves beat vague intentions.</p></div><button class="primary-button" id="add-task">＋ Add task</button></section><div class="filter-row"><button class="filter active" data-filter="all">All <b>6</b></button><button class="filter" data-filter="high">High priority <b>3</b></button><button class="filter" data-filter="open">Open <b>5</b></button><button class="filter" data-filter="done">Completed <b>1</b></button></div><div id="task-list" class="task-list"></div></div>
+
+        <div id="view-ideas" class="view"><section class="section-heading"><div><p class="eyebrow">LONG HORIZON</p><h2>Ideas</h2><p class="section-sub">Keep the spark alive without letting it hijack today.</p></div><button class="ghost-button">＋ Save an idea</button></section><div id="idea-list" class="idea-grid"></div></div>
+
+        <div id="view-opportunities" class="view"><section class="section-heading"><div><p class="eyebrow">PATTERN DETECTION</p><h2>Opportunity radar</h2><p class="section-sub">Where your notes, skills, and context overlap.</p></div><button class="primary-button" id="scan-radar">✦ Scan my vault</button></section><div id="opportunity-list" class="opportunity-grid"></div></div>
+
+        <div id="view-mission" class="view"><section class="section-heading"><div><p class="eyebrow">DEEP WORK PROTOCOL</p><h2>Mission mode</h2><p class="section-sub">Turn one meaningful goal into a plan you can actually execute.</p></div></section><section class="mission-layout"><article class="panel mission-hero"><span class="mission-flag">⚑ ACTIVE MISSION</span><h3>Launch the online store</h3><p>From a loose ambition to a sequence of practical moves.</p><div class="mission-progress"><div><span>Progress</span><b id="mission-progress-text">2 of 5 steps</b></div><div class="progress-track"><i id="mission-progress-bar" style="width:40%"></i></div></div><button class="outline-button" id="adjust-mission">↻ Adjust with new context</button></article><article class="panel mission-steps" id="mission-steps"></article></section></div>
+
+        <div id="view-settings" class="view"><section class="section-heading"><div><p class="eyebrow">CONTROL ROOM</p><h2>Settings</h2></div></section><article class="panel settings-panel"><div class="setting-row"><div><b>Display mode</b><span>Switch between a dark command center and a bright workspace.</span></div><button class="ghost-button" id="theme-setting">Toggle theme</button></div><div class="setting-row"><div><b>Demo data</b><span>Reset Mission Control to the original example vault.</span></div><button class="ghost-button" id="reset-demo">Reset demo data</button></div><div class="setting-row"><div><b>AI model</b><span>Local simulation · responses are grounded in your demo vault.</span></div><span class="connected-pill"><i></i> Connected</span></div></article></div>
+
+        <section class="assistant-dock"><div class="assistant-heading"><span class="assistant-avatar">✦</span><div><b>Ask Mission Control</b><span>Grounded in your vault</span></div><button class="collapse-button" id="assistant-toggle">−</button></div><div id="assistant-body"><div class="assistant-suggestions"><button data-question="What should I work on today?">What should I work on today?</button><button data-question="What am I forgetting?">What am I forgetting?</button><button data-question="Which idea has the most potential?">Which idea has the most potential?</button></div><div class="assistant-input"><input id="assistant-input" placeholder="Ask anything about your priorities..." /><button id="assistant-send">↑</button></div></div></section>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="modal"><div class="modal-card"><button class="modal-close" id="modal-close">×</button><span class="eyebrow">AI PRIORITIZATION LOGIC</span><h3 id="modal-title">Why these 3?</h3><p id="modal-copy"></p></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
